@@ -1,3 +1,4 @@
+import 'package:abc/query/home.dart';
 import 'package:flutter/material.dart';
 import 'query/name.dart';
 import 'Login/SplashScreen.dart';
@@ -6,11 +7,20 @@ import 'query/insert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Edit/profile.dart';
+import 'query/OTPpage.dart';
+import 'query/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp2());
+  runApp(MaterialApp(
+    title: 'My App',
+    home: MediaQuery(
+      data: MediaQueryData.fromWindow(WidgetsBinding.instance!.window)
+          .copyWith(textScaleFactor: 1.0),
+      child: LoginScreen(),
+    ),
+  ));
 }
 
 class MyApp2 extends StatelessWidget {
