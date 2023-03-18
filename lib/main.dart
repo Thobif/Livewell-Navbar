@@ -1,4 +1,4 @@
-import 'package:abc/query/home.dart';
+
 import 'package:flutter/material.dart';
 import 'query/name.dart';
 import 'Login/SplashScreen.dart';
@@ -10,7 +10,7 @@ import 'Edit/profile.dart';
 import 'query/OTPpage.dart';
 import 'query/login.dart';
 
-void main() async {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MaterialApp(
@@ -18,7 +18,7 @@ void main() async {
     home: MediaQuery(
       data: MediaQueryData.fromWindow(WidgetsBinding.instance!.window)
           .copyWith(textScaleFactor: 1.0),
-      child: LoginScreen(),
+      child: FirstPage(),
     ),
   ));
 }
@@ -39,86 +39,6 @@ class MyApp2 extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  final String userKey;
-  HomePage({required this.userKey});
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
 
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
-    Center(
-      child: Text(
-        'This is Food Tab',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    ),
-    Center(
-      child: Text(
-        'This is Home Tab',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    ),
-    Center(
-      child: Text(
-        'This is Fitness Tab',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text('Home'),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
-            },
-          ),
-        ],
-      ),
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white54,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant),
-            label: 'Food',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center),
-            label: 'Fitness',
-          ),
-        ],
-      ),
-    );
-  }
-}

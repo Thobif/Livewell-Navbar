@@ -1,6 +1,7 @@
+import 'package:abc/query/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:abc/main.dart';
+import 'navbar.dart';
 
 class EighthPage extends StatefulWidget {
   final String name;
@@ -134,7 +135,7 @@ class _EighthPageState extends State<EighthPage> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomePage(userKey: userKey)),
+                            builder: (context) =>HomePage(userKey: userKey)),
                         (Route<dynamic> route) => false,
                       );
                     },

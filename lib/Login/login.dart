@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:abc/main.dart';
-
+import 'package:abc/query/navbar.dart';
 void main() {
   runApp(MaterialApp(home: LoginPage()));
 }
